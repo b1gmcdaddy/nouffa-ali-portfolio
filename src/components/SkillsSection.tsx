@@ -13,9 +13,9 @@ const SkillsSection = () => {
       icon: MessageSquare,
       skills: [
         {name: "Written Communication", level: 95},
+        {name: "Verbal Communication", level: 94},
         {name: "Active Listening", level: 90},
         {name: "Conflict Resolution", level: 88},
-        {name: "Multilingual Support", level: 85},
       ],
       color: "from-purple-500 to-pink-500",
     },
@@ -23,10 +23,10 @@ const SkillsSection = () => {
       title: "Technical Skills",
       icon: Search,
       skills: [
-        {name: "Email Management Systems", level: 92},
-        {name: "CRM Platforms", level: 89},
-        {name: "Knowledge Base Creation", level: 87},
-        {name: "Data Analysis", level: 85},
+        {name: "Email Management Tools", level: 95},
+        {name: "CRM Platforms", level: 93},
+        {name: "AI Services and Tools", level: 91},
+        {name: "Data Entry and Administration", level: 87},
       ],
       color: "from-blue-500 to-purple-500",
     },
@@ -44,14 +44,15 @@ const SkillsSection = () => {
   ];
 
   const tools = [
-    "Zendesk",
+    "FreshDesk",
     "Salesforce",
-    "Intercom",
-    "Help Scout",
-    "Slack",
-    "Microsoft Office",
+    "Gorgias",
+    "Shopify",
+    "Maya",
+    "Retool",
+    "3CX",
+    "PhoneSpeak",
     "Google Workspace",
-    "Jira",
   ];
 
   return (

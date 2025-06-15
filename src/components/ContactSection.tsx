@@ -15,15 +15,13 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "nouffa.ali@email.com",
-      href: "mailto:nouffa.ali@email.com",
+      value: "alinopa8@email.com",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+63 916 441 6323",
       color: "from-blue-500 to-purple-500",
     },
     {

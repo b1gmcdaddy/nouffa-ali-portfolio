@@ -18,26 +18,21 @@ const ExperienceSection = () => {
 
   const mainExperiences = [
     {
-      title: "Senior Customer Success Specialist",
-      company: "TechSolutions Inc.",
-      period: "2022 - Present",
+      title: "Customer Service Assistant",
+      company: "Sharemoney®",
+      period: "May 2023 - Jan 2025",
       location: "Remote",
       description:
-        "Leading customer success initiatives and managing high-priority client relationships. Implemented new support workflows that increased customer satisfaction by 35%.",
-      achievements: [
-        "Reduced response time by 60%",
-        "Maintained 98% customer satisfaction rate",
-        "Trained and mentored 5 junior support staff",
-      ],
+        "Responsible for a variety of admin work such as chat support and sending e-mails.  Provided customer support by taking inbound and outbound calls to client of Sharemoney",
       color: "from-purple-500 to-pink-500",
     },
     {
-      title: "Email Support Specialist",
-      company: "Digital Connect Ltd.",
-      period: "2020 - 2022",
+      title: "Content Moderator",
+      company: "Alorica",
+      period: "Sept 2022 - April 2023",
       location: "Hybrid",
       description:
-        "Specialized in complex technical support via email, handling escalated cases and developing comprehensive support documentation.",
+        "Reviewed user-generated content about businesses and brands, making sure they adhered to a predetermined format, and checked for accuracy and other brand standards",
       achievements: [
         "Handled 200+ tickets per week",
         "Created 50+ knowledge base articles",
@@ -49,46 +44,22 @@ const ExperienceSection = () => {
 
   const additionalExperiences = [
     {
-      title: "Customer Service Representative",
-      company: "Global Support Systems",
-      period: "2018 - 2020",
-      location: "On-site",
+      title: "Content Moderator",
+      company: "TELUS International",
+      period: "Jul 2022 - Sept 2022",
+      location: "Remote (Contractual)",
       description:
-        "Provided multi-channel customer support across phone, email, and chat platforms. Developed strong problem-solving skills and product expertise.",
-      achievements: [
-        "Top performer for 8 consecutive months",
-        "Customer retention rate of 95%",
-        "Cross-trained in 3 different product lines",
-      ],
+        "Performed image annotation and captioning to enhance search engine optimization (SEO) efforts, adhering to established quotas and maintaining high-quality standards. Analyzed and provided feedback on text, web pages, images, and other types of information for leading search engines, using an online tool.",
       color: "from-teal-500 to-blue-500",
     },
     {
-      title: "Technical Support Associate",
-      company: "CloudTech Solutions",
-      period: "2017 - 2018",
+      title: "Customer Service Representative",
+      company: "Wipro",
+      period: "Sept 2021 - Aug 2022",
       location: "Remote",
       description:
-        "Provided technical assistance for cloud-based software solutions, troubleshooting complex issues and guiding users through software implementations.",
-      achievements: [
-        "Resolved 95% of tickets on first contact",
-        "Developed training materials for new hires",
-        "Specialized in API integration support",
-      ],
+        " Communicated with physicians, pharmacists, and other healthcare providers on behalf of patients; additionally, Performed daily customer-service-related tasks such as calling and sending e-mails.",
       color: "from-green-500 to-teal-500",
-    },
-    {
-      title: "Help Desk Specialist",
-      company: "StartupFlow Inc.",
-      period: "2016 - 2017",
-      location: "On-site",
-      description:
-        "Entry-level support role focusing on user onboarding and basic troubleshooting for a growing SaaS platform.",
-      achievements: [
-        "Maintained 4.8/5 customer satisfaction rating",
-        "Processed 150+ support requests daily",
-        "Created user-friendly FAQ documentation",
-      ],
-      color: "from-orange-500 to-red-500",
     },
   ];
 
@@ -358,12 +329,12 @@ const ExperienceSection = () => {
                       {exp.description}
                     </p>
 
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-gray-800 flex items-center gap-2">
+                    {/* <div className="space-y-3"> */}
+                    {/* <h4 className="font-semibold text-gray-800 flex items-center gap-2">
                         <TrendingUp className="w-5 h-5 text-green-500" />
                         Key Achievements
-                      </h4>
-                      <ul className="space-y-2">
+                      </h4> */}
+                    {/* <ul className="space-y-2">
                         {exp.achievements.map((achievement, achIndex) => (
                           <motion.li
                             key={achIndex}
@@ -383,8 +354,8 @@ const ExperienceSection = () => {
                             {achievement}
                           </motion.li>
                         ))}
-                      </ul>
-                    </div>
+                      </ul> */}
+                    {/* </div> */}
                   </div>
                 </motion.div>
               </motion.div>
