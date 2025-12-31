@@ -1,6 +1,6 @@
-import {motion, AnimatePresence} from "framer-motion";
-import {useInView} from "framer-motion";
-import {useRef, useState} from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   Calendar,
   MapPin,
@@ -13,14 +13,14 @@ import {
 
 const ExperienceSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, {once: true, margin: "-100px"});
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [showMore, setShowMore] = useState(false);
 
   const mainExperiences = [
     {
       title: "Customer Service Assistant",
       company: "Sharemoney®",
-      period: "May 2023 - Jan 2025",
+      period: "May 2023 - Aug 2025",
       location: "Remote",
       description:
         "Responsible for a variety of admin work such as chat support and sending e-mails.  Provided customer support by taking inbound and outbound calls to client of Sharemoney",
@@ -67,7 +67,7 @@ const ExperienceSection = () => {
     ? [...mainExperiences, ...additionalExperiences]
     : mainExperiences;
 
-  const burstParticles = Array.from({length: 8}, (_, i) => ({
+  const burstParticles = Array.from({ length: 8 }, (_, i) => ({
     id: i,
     delay: i * 0.1,
     angle: (360 / 8) * i,
@@ -111,9 +111,9 @@ const ExperienceSection = () => {
 
       <div className="container mx-auto px-6" ref={ref}>
         <motion.div
-          initial={{opacity: 0, y: 50}}
-          animate={isInView ? {opacity: 1, y: 0} : {}}
-          transition={{duration: 0.8}}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16 relative">
           {/* Sparkle animations around title */}
           <motion.div
@@ -131,8 +131,8 @@ const ExperienceSection = () => {
           </motion.div>
 
           <motion.h2
-            initial={{scale: 0}}
-            animate={isInView ? {scale: 1} : {}}
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
             transition={{
               type: "spring",
               bounce: 0.6,
@@ -144,9 +144,9 @@ const ExperienceSection = () => {
           </motion.h2>
 
           <motion.p
-            initial={{opacity: 0, y: 20}}
-            animate={isInView ? {opacity: 1, y: 0} : {}}
-            transition={{delay: 0.6}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6 }}
             className="text-xl text-gray-600 max-w-3xl mx-auto">
             A journey of growth, learning, and making meaningful impact in
             customer service
@@ -187,8 +187,8 @@ const ExperienceSection = () => {
                   x: index % 2 === 0 ? -100 : 100,
                   scale: 0.8,
                 }}
-                animate={isInView ? {opacity: 1, x: 0, scale: 1} : {}}
-                exit={{opacity: 0, scale: 0.8, transition: {duration: 0.3}}}
+                animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
+                exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
                 transition={{
                   duration: 0.8,
                   delay: index * 0.2,
@@ -234,11 +234,11 @@ const ExperienceSection = () => {
                 {/* Timeline indicator with enhanced animation */}
                 <motion.div
                   className="relative"
-                  whileHover={{scale: 1.2}}
-                  transition={{type: "spring", bounce: 0.6}}>
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring", bounce: 0.6 }}>
                   <motion.div
-                    initial={{scale: 0, rotate: -180}}
-                    animate={isInView ? {scale: 1, rotate: 0} : {}}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : {}}
                     transition={{
                       duration: 0.8,
                       delay: index * 0.2 + 0.4,
@@ -248,8 +248,8 @@ const ExperienceSection = () => {
                     className={`w-20 h-20 rounded-full bg-gradient-to-r ${exp.color} flex items-center justify-center shadow-xl relative overflow-hidden`}>
                     <motion.div
                       className="absolute inset-0 bg-white"
-                      initial={{scale: 0}}
-                      animate={{scale: [0, 1.2, 0]}}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: [0, 1.2, 0] }}
                       transition={{
                         duration: 1,
                         delay: index * 0.2 + 0.6,
@@ -261,7 +261,7 @@ const ExperienceSection = () => {
                     {/* Rotating ring */}
                     <motion.div
                       className="absolute inset-0 border-4 border-white border-opacity-30 rounded-full"
-                      animate={{rotate: 360}}
+                      animate={{ rotate: 360 }}
                       transition={{
                         duration: 10,
                         repeat: Infinity,
@@ -272,9 +272,9 @@ const ExperienceSection = () => {
 
                   {index < allExperiences.length - 1 && (
                     <motion.div
-                      initial={{height: 0}}
-                      animate={isInView ? {height: "100px"} : {}}
-                      transition={{duration: 0.8, delay: index * 0.2 + 0.6}}
+                      initial={{ height: 0 }}
+                      animate={isInView ? { height: "100px" } : {}}
+                      transition={{ duration: 0.8, delay: index * 0.2 + 0.6 }}
                       className="absolute top-20 left-1/2 w-1 bg-gradient-to-b from-purple-400 to-transparent transform -translate-x-1/2"
                     />
                   )}
@@ -303,12 +303,12 @@ const ExperienceSection = () => {
                   <div className="relative z-10">
                     <div className="flex flex-wrap items-center gap-4 mb-6">
                       <motion.h3
-                        whileHover={{scale: 1.05}}
+                        whileHover={{ scale: 1.05 }}
                         className="text-2xl font-bold font-playfair text-gray-800">
                         {exp.title}
                       </motion.h3>
                       <motion.span
-                        whileHover={{scale: 1.1}}
+                        whileHover={{ scale: 1.1 }}
                         className={`px-4 py-2 bg-gradient-to-r ${exp.color} text-white rounded-full text-sm font-medium`}>
                         {exp.company}
                       </motion.span>
@@ -365,9 +365,9 @@ const ExperienceSection = () => {
 
         {/* Show More/Less Button */}
         <motion.div
-          initial={{opacity: 0, y: 50}}
-          animate={isInView ? {opacity: 1, y: 0} : {}}
-          transition={{delay: 1.5}}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 1.5 }}
           className="text-center mt-16">
           <motion.button
             onClick={() => setShowMore(!showMore)}
@@ -375,19 +375,19 @@ const ExperienceSection = () => {
               scale: 1.05,
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
             }}
-            whileTap={{scale: 0.95}}
+            whileTap={{ scale: 0.95 }}
             className="glass-effect px-8 py-4 rounded-full font-medium text-gray-700 hover:text-gray-900 transition-colors relative overflow-hidden group">
             {/* Button background animation */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-10"
-              transition={{duration: 0.3}}
+              transition={{ duration: 0.3 }}
             />
 
             <span className="relative z-10 flex items-center gap-3">
               {showMore ? "Show Less Experience" : "Show More Experience"}
               <motion.div
-                animate={{rotate: showMore ? 180 : 0}}
-                transition={{duration: 0.3}}>
+                animate={{ rotate: showMore ? 180 : 0 }}
+                transition={{ duration: 0.3 }}>
                 <ChevronDown className="w-5 h-5" />
               </motion.div>
             </span>
@@ -401,7 +401,7 @@ const ExperienceSection = () => {
                   "radial-gradient(circle, rgba(168,85,247,0) 0%, transparent 70%)",
                 ],
               }}
-              transition={{duration: 0.6}}
+              transition={{ duration: 0.6 }}
             />
           </motion.button>
         </motion.div>
