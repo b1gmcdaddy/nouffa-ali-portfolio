@@ -1,15 +1,22 @@
 import {motion} from "framer-motion";
 import {useInView} from "framer-motion";
 import {useRef, useState} from "react";
-import {Mail, Phone, MapPin, Send, CheckCircle} from "lucide-react";
+import {Mail, Phone, MapPin, Send, CheckCircle, Loader2} from "lucide-react";
+import emailjs from "@emailjs/browser";
+import {toast} from "sonner";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {once: true, margin: "-100px"});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactInfo = [
     {
@@ -33,10 +40,35 @@ const ContactSection = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const firstName = String(data.get("first_name") ?? "").trim();
+    const lastName = String(data.get("last_name") ?? "").trim();
+    const params = {
+      from_name: `${firstName} ${lastName}`.trim(),
+      from_email: String(data.get("from_email") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+
+    setIsSubmitting(true);
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, params, {
+        publicKey: PUBLIC_KEY,
+      });
+      form.reset();
+      setIsSubmitted(true);
+      toast.success("Message sent!");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      toast.error(
+        "Couldn't send message. Please email alinopa8@email.com directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -132,6 +164,7 @@ const ContactSection = () => {
                       </label>
                       <Input
                         type="text"
+                        name="first_name"
                         required
                         className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                         placeholder="Your first name"
@@ -147,6 +180,7 @@ const ContactSection = () => {
                       </label>
                       <Input
                         type="text"
+                        name="last_name"
                         required
                         className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                         placeholder="Your last name"
@@ -163,6 +197,7 @@ const ContactSection = () => {
                     </label>
                     <Input
                       type="email"
+                      name="from_email"
                       required
                       className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="your.email@example.com"
@@ -177,6 +212,7 @@ const ContactSection = () => {
                       Message
                     </label>
                     <Textarea
+                      name="message"
                       required
                       rows={6}
                       className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
@@ -190,9 +226,19 @@ const ContactSection = () => {
                     transition={{duration: 0.6, delay: 1}}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-3 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                      <Send className="w-5 h-5 mr-2" />
-                      Send Message
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-3 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-70 disabled:hover:scale-100">
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                   </motion.div>
                 </form>
