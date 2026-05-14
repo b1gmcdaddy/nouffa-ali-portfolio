@@ -22,7 +22,7 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "alinopa8@email.com",
+      value: "alinopa8@gmail.com",
       color: "from-purple-500 to-pink-500",
     },
     {
